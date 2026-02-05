@@ -1,0 +1,18 @@
+spring.application.name=doctor-service
+
+server.port = 8084
+
+#mysql configuration 
+
+spring.datasource.url=jdbc:mysql://localhost:3306/doctor_db_m
+spring.datasource.username=root
+spring.datasource.password=Velavan@2019
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+
+#eureka configuration 
+
+eureka.client.service-url.defaultZone=http://localhost:8761/eureka/
+eureka.client.registry-with-eureka=true
+eureka.client.fetch-registry=true
+eureka.instance.prefer-ip-address=true

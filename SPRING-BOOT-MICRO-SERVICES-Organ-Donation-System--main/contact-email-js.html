@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact - Organ Donation System</title>
+  <style>
+    body {
+      background-color: #e6f2ff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 123, 255, 0.2);
+      padding: 30px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #007acc;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #005f99;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: #007acc;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      margin-top: 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #005f99;
+    }
+
+
+    .status {
+      text-align: center;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    .footer {
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 7rem;
+  }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Contact - Organ Donation System</h2>
+    <form id="contact-form">
+      <label for="recipient_name">Recipient Name</label>
+      <input type="text" id="recipient_name" name="recipient_name" required />
+
+      <label for="recipient_id">Recipient ID</label>
+      <input type="text" id="recipient_id" name="recipient_id" required />
+
+      <label for="yours_request">Your Request</label>
+      <input type="text" id="yours_request" name="yours_request" required />
+
+      <label for="recipient_age">Recipient Age</label>
+      <input type="number" id="recipient_age" name="recipient_age" required />
+
+      <label for="recipient_mobile_number">Mobile Number</label>
+      <input type="tel" id="recipient_mobile_number" name="recipient_mobile_number" required />
+
+      <label for="recipient_mail_id">Email ID</label>
+      <input type="email" id="recipient_mail_id" name="recipient_mail_id" required />
+
+      <label for="description">Description</label>
+      <textarea id="description" name="description" rows="4" required></textarea>
+
+      <button type="submit">Send Request</button>
+      <div class="status" id="status-msg"></div>
+    </form>
+
+  </div>
+
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init("stgqpkMz2xqF0Moe5"); // replace with your EmailJS public key
+    })();
+
+    document.getElementById("contact-form").addEventListener("submit", function(event) {
+      event.preventDefault();
+      const status = document.getElementById("status-msg");
+
+      emailjs.sendForm("service_2jdynvr", "template_zqfw3xp", this)
+        .then(() => {
+          status.style.color = "green";
+          status.innerHTML = "Message sent successfully!";
+          this.reset();
+        }, (error) => {
+          status.style.color = "red";
+          status.innerHTML = "Failed to send message. Try again!";
+          console.error("EmailJS Error:", error);
+        });
+    });
+  </script>
+
+<footer style="background-color: #29b6f6; color: white; text-align: center; padding: 1rem 0; margin-top: 1rem;">
+    <p style="margin: 0;">&copy; 2025 OrganLife. All rights reserved.</p>
+  </footer>
+  
+
+</body>
+</html>

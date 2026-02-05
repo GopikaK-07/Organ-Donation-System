@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Organ Donation System</title>
+  <link rel="stylesheet" href="styleservice.css">
+</head>
+<body>
+
+  <h1>Organ Donation System 💙</h1>
+
+  <!-- Donor Section -->
+  <div class="card-3d donor-box">
+    <h2>Add Donor</h2>
+    <form id="donorForm">
+      <input type="text" id="donorName" placeholder="Donor Name" required>
+      <input type="text" id="organType" placeholder="Organ Type" required>
+      <button type="submit">Add Donor</button>
+    </form>
+    <button class="load-btn" onclick="fetchDonors()">Load Donors</button>
+    <button class="load-btn" onclick="toggleDonorTable()">Hide Donor List</button>
+    
+    <!-- Donor Table Section -->
+    <div id="donorTableSection" class="hidden">
+      <h3>Donor List</h3>
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>Donor ID</th>
+            <th>Donor Name</th>
+            <th>Organ Type</th>
+          </tr>
+        </thead>
+        <tbody id="donorList"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Recipient Section -->
+  <div class="card-3d recipient-box">
+    <h2>Add Recipient</h2>
+    <form id="recipientForm">
+      <input type="text" id="recipientName" placeholder="Recipient Name" required>
+      <input type="number" id="recipientAge" placeholder="Recipient Age" required>
+      <input type="number" id="donorId" placeholder="Donor ID" required>
+      <button type="submit">Add Recipient</button>
+    </form>
+    <button class="load-btn" onclick="fetchRecipients()">Load Recipients</button>
+    <button class="load-btn" onclick="toggleRecipientTable()">Hide Recipient List</button>
+
+    <!-- Recipient Table Section -->
+    <div id="recipientTableSection" class="hidden">
+      <h3>Recipient List</h3>
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>Recipient ID</th>
+            <th>Recipient Name</th>
+            <th>Recipient Age</th>
+            <th>Donor ID</th>
+          </tr>
+        </thead>
+        <tbody id="recipientList"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer>© 2025 Organ Donation | 3D Light Blue Theme</footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
